@@ -1,0 +1,120 @@
+body{
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #f8f8fa;
+    
+}
+
+.container{
+    
+    height: 100%;
+    min-height: 100%;
+    width: 90%;
+    max-width: 450px;
+    margin: 1.5rem auto;
+    padding-top: 2rem;
+    
+
+}
+
+
+.hero-bg{
+    position:absolute;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 25%;
+    min-height: 25%;
+    
+    background-repeat: no-repeat;
+    background-clip:border-box;
+    background-position: 50% 0%;
+    z-index: -1;
+}
+
+.light-mode-bg{
+    background-image: url("./images/bg-desktop-light.jpg");
+}
+
+.dark-mode-bg{
+    background-image: url("./images/bg-desktop-dark.jpg");
+}
+
+.header{
+    margin-top: 0.5rem;
+    display: flex;
+}
+
+h1 {
+    margin: 0 !important;
+}
+.title{
+    /* margin-top: -2rem; */
+    flex-grow: 4;
+    color:white;
+    font-variant-caps:all-petite-caps;
+    font-weight: 400;
+    letter-spacing: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.darkmode-switch-wrapper{
+    
+    width: 2rem;
+    height: 2rem;
+}
+
+.darkmode-switch-wrapper input[type="checkbox"]{
+    opacity: 0;
+    position: relative;
+    display:none;
+}
+
+.main-app-content{
+    
+    margin-top: 22%;
+    background-color: red;
+
+}
+
+.input-wrapper{
+    width: 100%;
+    min-height: 3.5rem;
+    background-color: blue;
+    border-radius: 7px;
+    display:flex;
+    ;
+}
+.check-wrapper{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-content: flex-end;
+    padding-left: 0.4rem;
+}
+.check-wrapper input[type="checkbox"]{
+    opacity: 0;
+    display:none;
+}
+.checkmark{
+    background-color:teal;
+    height: 1.8rem;
+    width: 1.8rem;
+    margin-top: 0.8rem;
+    border-radius: 100%;
+}
+
+.check-wrapper input:checked + .checkmark{
+    background-color: black;
+    border: 25px;
+}
+
+.form-wrapper{
+    flex-grow: 5;
+    height: 100%;
+    align-content: center;
+}
+#submit-button{
+    opacity: 0;
+    width: 0px;
+    max-width: 0px;
+}

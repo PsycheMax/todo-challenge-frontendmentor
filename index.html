@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Todo app</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div id="bg-controller" class="hero-bg light-mode-bg">
+      </div>
+      <div class="title">
+        <h1>Todo</h1>
+      </div>
+      <div class="darkmode-switch-wrapper">
+        <label for="darkmode">
+          <img id="darkmodeSwitchIcon" src="images/icon-moon.svg" alt="moon icon">
+          <input type="checkbox" name="darkmode" id="darkmode">
+        </label>
+      </div>
+
+    </header>
+    <div class="main-app-content">
+      <div class="input-wrapper">
+        <div class="check-wrapper">
+          <label id="task-done-label" for="taskDoneX">
+            <input type="checkbox" name="taskDoneX" id="taskDoneX">
+            <div class="checkmark"></div>
+          </label>
+        </div>
+        <div class="form-wrapper">
+          <form action="/">
+            <input type="text" name="newToDo" id="newToDo">
+            <input id="submit-button" type="submit" value="Submit">
+          </form>
+          <button>Clear this task</button>
+        </div>
+      </div>
+
+      XX items left
+
+      <div class="todos-list-wrapper">
+        <div class="example-to-do">
+          <input type="checkbox" name="toGenerateProc" id="procedurallyIncreaseXXX">
+          <p>Lorem Ipsum Dolor sit amet</p>
+          <button>Eliminate ToDo</button>
+        </div>
+      </div>
+
+      <button>All hsl(220, 98%, 61%)</button>
+      <button>Active</button>
+      <button>Completed</button>
+      <button>Clear Completed</button>
+
+
+      Drag and drop to reorder list
+
+      <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="#">Your Name Here</a>.
+      </div>
+
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>

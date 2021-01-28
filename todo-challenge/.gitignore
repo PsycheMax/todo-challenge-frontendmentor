@@ -24,3 +24,12 @@ ext/mkinstalldirs
 ext/run-tests.php
 ext/.deps
 ext/libtool
+design/active-states-dark.jpg
+design/active-states-light.jpg
+design/desktop-design-dark.jpg
+design/desktop-design-light.jpg
+design/desktop-preview.jpg
+design/mobile-design-dark.jpg
+design/mobile-design-light.jpg
+README.md
+style-guide.md
