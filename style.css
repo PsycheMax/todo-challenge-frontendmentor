@@ -1,19 +1,15 @@
 body{
     font-family: 'Josefin Sans', sans-serif;
     background-color: #f8f8fa;
-    
 }
 
 .container{
-    
     height: 100%;
     min-height: 100%;
     width: 90%;
     max-width: 450px;
-    margin: 1.5rem auto;
+    margin: 1rem auto;
     padding-top: 2rem;
-    
-
 }
 
 
@@ -71,41 +67,55 @@ h1 {
 
 .main-app-content{
     
-    margin-top: 22%;
-    background-color: red;
+    margin-top: 10%;
 
 }
 
 .input-wrapper{
     width: 100%;
     min-height: 3.5rem;
-    background-color: blue;
+    background-color: #FFFFFF;
     border-radius: 7px;
     display:flex;
     ;
 }
+
 .check-wrapper{
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-content: flex-end;
-    padding-left: 0.4rem;
+    flex-grow: 0.3;
+    align-self: center;
+    margin: 0 auto;
 }
+
 .check-wrapper input[type="checkbox"]{
     opacity: 0;
     display:none;
 }
-.checkmark{
-    background-color:teal;
-    height: 1.8rem;
-    width: 1.8rem;
-    margin-top: 0.8rem;
-    border-radius: 100%;
-}
 
 .check-wrapper input:checked + .checkmark{
-    background-color: black;
-    border: 25px;
+    background-position:0%;
+    background-image: linear-gradient(130deg, hsl(192, 100%, 67%),hsl(280, 87%, 65%));
+}
+
+.check-icon{
+    margin: 23%;
+    width: 0.9rem;
+    height: 0.8rem;
+}
+
+.checkmark{
+    background-image: linear-gradient(130deg, #ffffff, #ffffff);
+    height: 1.6rem;
+    width: 1.6rem;
+    
+    border-radius: 100%;
+    border: 2px solid #f5f5f5;
+    margin: auto;
+}
+
+.task-done-label{
+    display: block;
+    width: 3.5rem;
+    margin-right: -0.5rem;
 }
 
 .form-wrapper{
@@ -113,8 +123,147 @@ h1 {
     height: 100%;
     align-content: center;
 }
-#submit-button{
+
+.form-wrapper input[type="text"] {
+    width: 90%;
+    margin-top: 0.4rem;
+    min-height: 2.5rem;
+    border: none;
+    color: grey;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.form-wrapper input[type="text"]:focus {
+    border: none !important;
+    outline: 1px solid lightgray;
+}
+
+.button-to-hide{
     opacity: 0;
     width: 0px;
     max-width: 0px;
+    display:none;
+}
+
+.todos-list-wrapper{
+    width: 100%;
+    min-height: 3.5rem;
+    background-color: #FFFFFF;
+    border-radius: 7px;
+
+    margin-top: 1.3rem;
+    box-shadow: 0px 5px 5px 0px hsl(236, 33%, 92%);
+}
+
+.to-do{
+    display:flex;
+    width: 100%;
+    min-height: 3.5rem;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid lightgrey;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+/* .to-do:last-of-type{
+    border-bottom: none !important;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+} */
+
+.to-do:first-of-type{
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.task-single-wrapper{
+    width: 100%;
+    min-height: 3.5rem;
+    background-color: #FFFFFF;
+    border-radius: 7px;
+    display:flex;
+    ;
+}
+
+.task-label{
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    font-weight: lighter;
+    color: grey;
+    width: 90%;
+    padding: 0.6rem;
+}
+
+.task-clear-label{
+    flex-grow: 2;
+    align-self: center;
+    justify-self: center;
+    width: 2rem;
+    min-width: 2rem;
+    padding: 0.3rem;
+}
+
+.task-clear-label-x{
+    /* justify-self: center; */
+
+}
+
+.task-clear-button{
+    display: none;
+}
+
+.last-row{
+    background: #FFFFFF;
+    border-bottom: none !important;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;   
+    display:flex;
+    min-height: 3rem;
+    height: 3rem;
+    justify-content: space-between;
+    color: hsl(236, 9%, 61%);
+    font-size: 0.9rem;
+}
+
+.items-left{
+    display: flex;
+    justify-self: flex-start;
+    align-self: center;
+    padding-left: 1rem;
+}
+
+.clear-completed{
+    display:flex;
+    justify-content: end;
+    align-self: center;
+    padding-right: 1rem;
+}
+.clear-completed-text{
+
+}
+
+.selectors-wrapper{
+    margin-top: 1rem;
+    background: #FFFFFF;
+    border-radius: 7px;
+    display:flex;
+    min-height: 3rem;
+    height: 3.2rem;
+    justify-content:center;
+    color: hsl(236, 9%, 61%);
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+.selectors-wrapper div{
+    align-self: center;
+    padding: 0 0.5rem;
+}
+
+.selected-selector{
+    color: hsl(220, 98%, 61%);
+}
+
+label:hover{
+    cursor:pointer;
 }

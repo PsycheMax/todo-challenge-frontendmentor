@@ -47,35 +47,84 @@
     <div class="main-app-content">
       <div class="input-wrapper">
         <div class="check-wrapper">
-          <label id="task-done-label" for="taskDoneX">
+          <label class="task-done-label" id="task-done-label-input" for="taskDoneX">
             <input type="checkbox" name="taskDoneX" id="taskDoneX">
-            <div class="checkmark"></div>
+            <div class="checkmark"><img class="check-icon" src="./images/icon-check.svg" alt="Check"></div>
+
           </label>
         </div>
         <div class="form-wrapper">
           <form action="/">
-            <input type="text" name="newToDo" id="newToDo">
-            <input id="submit-button" type="submit" value="Submit">
+            <input type="text" name="newToDo" id="newToDo" placeholder="Create a new todo"
+              aria-placeholder="Insert new task here">
+            <input class="button-to-hide" type="submit" value="Submit">
           </form>
-          <button>Clear this task</button>
         </div>
       </div>
 
-      XX items left
 
       <div class="todos-list-wrapper">
-        <div class="example-to-do">
-          <input type="checkbox" name="toGenerateProc" id="procedurallyIncreaseXXX">
-          <p>Lorem Ipsum Dolor sit amet</p>
-          <button>Eliminate ToDo</button>
+
+        <div class="to-do">
+          <div class="check-wrapper">
+            <label class="task-done-label" id="task-done-label" for="taskDoneXincrement">
+              <input type="checkbox" name="taskDoneX" id="taskDoneXincrement">
+              <div class="checkmark"><img class="check-icon" src="./images/icon-check.svg" alt="Check"></div>
+
+            </label>
+          </div>
+          <div class="task-single-wrapper">
+            <div class="task-label">
+              <p class="task-text">
+                Lorem ipsum dolor sit amet
+              </p>
+            </div>
+          </div>
+
+          <label for="clear-todo" class="task-clear-label">
+            <div class="task-clear-label-X"><img src="./images/icon-cross.svg" alt="X - Clear Task icon"></div>
+            <input class="task-clear-button" type="button" value="X" id="clear-todo">
+          </label>
+
         </div>
+
+
+        <div class="last-row ">
+          <div class="items-left"><span id="items-left-number">xx </span> items left</div>
+          <div class="clear-completed">
+            <label for="clear-completed-tasks">
+              <div class="clear-completed-text">Clear Completed</div>
+              <input class="button-to-hide" type="button" value="Clear Completed" id="clear-completed-tasks">
+            </label>
+          </div>
+        </div>
+
       </div>
 
-      <button>All hsl(220, 98%, 61%)</button>
-      <button>Active</button>
-      <button>Completed</button>
-      <button>Clear Completed</button>
+      <div class="selectors-wrapper">
+        <div class="all-selector">
+          <label for="all-selector" class="selector-button selected-selector all-selector-label">
+            <div>All</div>
+            <input class="button-to-hide" type="button" value="All">
+          </label>
+          <!-- <button>All hsl(220, 98%, 61%)</button> -->
+        </div>
+        <div class="active-selector">
+          <label for="active-selector" class="selector-button active-selector-label">
+            <div>Active</div>
+            <input class="button-to-hide" type="button" value="All">
+          </label>
+          <!-- <button>Active</button> -->
+        </div>
+        <div class="completed-selector">
 
+          <label for="completed-selector" class="selector-button complete-selector-label">
+            <div>Completed</div>
+            <input class="button-to-hide" type="button" value="All">
+          </label>
+          <!-- <button>Completed</button> -->
+        </div>
+      </div>
 
       Drag and drop to reorder list
 
