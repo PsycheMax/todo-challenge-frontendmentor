@@ -1,7 +1,7 @@
 
 function populateToDo(object) {
     let newText = object.text;
-    let newCompleted = object.completed;
+    // let newCompleted = object.completed;
     let newPosition = object.position;
     let toReturn = `
     <div class="to-do">
@@ -20,7 +20,7 @@ function populateToDo(object) {
     </div>
 
     <label for="clear-todo-${newPosition}" class="task-clear-label">
-      <div class="task-clear-label--${newPosition}"><img src="./images/icon-cross.svg" alt="X - Clear Task icon"></div>
+      <div class="task-clear-label-${newPosition}"><img src="./images/icon-cross.svg" alt="X - Clear Task icon"></div>
       <input class="task-clear-button" type="button" value="X" id="clear-todo-${newPosition}">
     </label>
 
@@ -132,6 +132,7 @@ todosList.filterTasks = function (completedStatus) {
 todosList.updatePositions = function () {
     for (let i = 0; i < toDoArray.length; i++) {
         toDoArray[i].position = i;
+        // TODO: FIX THIS
         todoContainer.children[i].querySelector(`input[type="checkbox"]`).checked = toDoArray[i].completed;
     }
     itemsCounter.innerText = toDoArray.length + 1;
