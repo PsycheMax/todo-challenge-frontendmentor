@@ -28,7 +28,7 @@
   </style>
 </head>
 
-<body>
+<body onpageshow="onPageLoad()">
   <div class="container">
     <header class="header">
       <div id="bg-controller" class="hero-bg light-mode-bg">
@@ -42,19 +42,20 @@
           <input type="checkbox" name="darkmode" id="darkmode">
         </label>
       </div>
-
     </header>
+
     <div class="main-app-content">
       <div class="input-wrapper">
         <div class="check-wrapper">
-          <label class="task-done-label" id="task-done-label-input" for="taskDoneX">
-            <input type="checkbox" name="taskDoneX" id="taskDoneX">
-            <div class="checkmark"><img class="check-icon" src="./images/icon-check.svg" alt="Check"></div>
-
+          <label class="task-done-label" id="task-done-label-input" for="newTaskStatus">
+            <input type="checkbox" name="newTaskStatus" id="newTaskStatus">
+            <div class="checkmark">
+              <img class="check-icon" src="./images/icon-check.svg" alt="Check">
+            </div>
           </label>
         </div>
         <div class="form-wrapper">
-          <form action="/">
+          <form action="javascript:todosList.addTodo()">
             <input type="text" name="newToDo" id="newToDo" placeholder="Create a new todo"
               aria-placeholder="Insert new task here">
             <input class="button-to-hide" type="submit" value="Submit">
@@ -64,33 +65,35 @@
 
 
       <div class="todos-list-wrapper">
+        <div id="to-do-container">
+          <!-- <div class="to-do">
+            <div class="check-wrapper">
+              <label class="task-done-label" id="task-done-label" for="taskDoneXincrement">
+                <input type="checkbox" name="taskDoneX" id="taskDoneXincrement">
+                <div class="checkmark"><img class="check-icon" src="./images/icon-check.svg" alt="Check"></div>
 
-        <div class="to-do">
-          <div class="check-wrapper">
-            <label class="task-done-label" id="task-done-label" for="taskDoneXincrement">
-              <input type="checkbox" name="taskDoneX" id="taskDoneXincrement">
-              <div class="checkmark"><img class="check-icon" src="./images/icon-check.svg" alt="Check"></div>
-
-            </label>
-          </div>
-          <div class="task-single-wrapper">
-            <div class="task-label">
-              <p class="task-text">
-                Lorem ipsum dolor sit amet
-              </p>
+              </label>
             </div>
-          </div>
+            <div class="task-single-wrapper">
+              <div class="task-label">
+                <p class="task-text">
+                  Lorem ipsum dolor sit amet
+                </p>
+              </div>
+            </div>
 
-          <label for="clear-todo" class="task-clear-label">
-            <div class="task-clear-label-X"><img src="./images/icon-cross.svg" alt="X - Clear Task icon"></div>
-            <input class="task-clear-button" type="button" value="X" id="clear-todo">
-          </label>
+            <label for="clear-todo" class="task-clear-label">
+              <div class="task-clear-label-X"><img src="./images/icon-cross.svg" alt="X - Clear Task icon"></div>
+              <input class="task-clear-button" type="button" value="X" id="clear-todo">
+            </label>
+
+          </div> -->
 
         </div>
 
 
         <div class="last-row ">
-          <div class="items-left"><span id="items-left-number">xx </span> items left</div>
+          <div class="items-left"><span id="items-left-number">x</span>&nbsp;items left</div>
           <div class="clear-completed">
             <label for="clear-completed-tasks">
               <div class="clear-completed-text">Clear Completed</div>
@@ -103,26 +106,29 @@
 
       <div class="selectors-wrapper">
         <div class="all-selector">
-          <label for="all-selector" class="selector-button selected-selector all-selector-label">
+          <label for="all-selector" class="selector-button selected-selector all-selector-label"
+            onclick="todosList.show(toDoArray)">
             <div>All</div>
             <input class="button-to-hide" type="button" value="All">
           </label>
-          <!-- <button>All hsl(220, 98%, 61%)</button> -->
+
         </div>
         <div class="active-selector">
-          <label for="active-selector" class="selector-button active-selector-label">
+          <label for="active-selector" class="selector-button active-selector-label"
+            onclick="todosList.filterTasks(false)">
             <div>Active</div>
             <input class="button-to-hide" type="button" value="All">
           </label>
-          <!-- <button>Active</button> -->
+
         </div>
         <div class="completed-selector">
 
-          <label for="completed-selector" class="selector-button complete-selector-label">
+          <label for="completed-selector" class="selector-button complete-selector-label"
+            onclick="todosList.filterTasks(true)">
             <div>Completed</div>
             <input class="button-to-hide" type="button" value="All">
           </label>
-          <!-- <button>Completed</button> -->
+
         </div>
       </div>
 
