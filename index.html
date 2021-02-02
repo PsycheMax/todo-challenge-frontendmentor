@@ -37,7 +37,7 @@
         <h1>Todo</h1>
       </div>
       <div class="darkmode-switch-wrapper">
-        <label for="darkmode">
+        <label for="darkmode" onchange="darkModeToggle()">
           <img id="darkmodeSwitchIcon" src="images/icon-moon.svg" alt="moon icon">
           <input type="checkbox" name="darkmode" id="darkmode">
         </label>
@@ -97,7 +97,8 @@
           <div class="clear-completed">
             <label for="clear-completed-tasks">
               <div class="clear-completed-text">Clear Completed</div>
-              <input class="button-to-hide" type="button" value="Clear Completed" id="clear-completed-tasks">
+              <input class="button-to-hide" type="button" value="Clear Completed" id="clear-completed-tasks"
+                onclick="todosList.eliminateCompleted()">
             </label>
           </div>
         </div>
@@ -107,7 +108,7 @@
       <div id="selectors-wrapper" class="selectors-wrapper">
         <div class="all-selector">
           <label for="all-selector" class="selector-button selected-selector all-selector-label"
-            onclick="todosList.show(toDoArray);selectorActivation('all');">
+            onclick="selectorActivation('all');">
             <div>All</div>
             <input class="button-to-hide" type="button" value="All">
           </label>
@@ -115,7 +116,7 @@
         </div>
         <div class="active-selector">
           <label for="active-selector" class="selector-button active-selector-label"
-            onclick="todosList.filterTasks(false);selectorActivation('active');">
+            onclick="selectorActivation('active');">
             <div>Active</div>
             <input class="button-to-hide" type="button" value="All">
           </label>
@@ -124,7 +125,7 @@
         <div class="completed-selector">
 
           <label for="completed-selector" class="selector-button complete-selector-label"
-            onclick="todosList.filterTasks(true); selectorActivation('completed');">
+            onclick="selectorActivation('completed');">
             <div>Completed</div>
             <input class="button-to-hide" type="button" value="All">
           </label>
