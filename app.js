@@ -4,30 +4,35 @@ function populateToDo(object) {
     // let newCompleted = object.completed;
     let newPosition = object.position;
     let toReturn = `
-    <div class="to-do" draggable="true" ondragevent="">
-    <div class="check-wrapper">
-      <label class="task-done-label" id="task-done-label" for="task-done-number-${newPosition}" onchange="todosList.markAs('${newText}')">
-        <input type="checkbox" name="task-done-number-${newPosition}" id="task-done-number-${newPosition}">
-        <div class="checkmark"><img class="check-icon" src="./images/icon-check.svg" alt="Check"></div>
-      </label>
-    </div>
-    <div class="task-single-wrapper">
-      <div class="task-label">
-        <p class="task-text">
-          ${newText}
-        </p>
-      </div>
-    </div>
+    <div class="to-do" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
+    <div class="drag-target-above" ondragover="dragOver(event)" ondrop="dropOver(event,false)" ondragleave="dragLeave(event)">&nbsp;</div>
+        <div class="check-wrapper">
+        <label class="task-done-label" id="task-done-label" for="task-done-number-${newPosition}" onchange="todosList.markAs('${newText}')">
+            <input type="checkbox" name="task-done-number-${newPosition}" id="task-done-number-${newPosition}">
+            <div class="checkmark"><img class="check-icon" src="./images/icon-check.svg" alt="Check"></div>
+        </label>
+        </div>
+        <div class="task-single-wrapper">
+        <div class="task-label">
+            <p class="task-text">
+            ${newText}
+            </p>
+        </div>
+        </div>
 
-    <label for="clear-todo-${newPosition}" class="task-clear-label">
-      <div class="task-clear-label-${newPosition}"><img src="./images/icon-cross.svg" alt="X - Clear Task icon"></div>
-      <input class="task-clear-button" type="button" value="X" id="clear-todo-${newPosition}" onclick="todosList.eliminateTask('${newText}')">
-    </label>
-
-  </div>`
-
+        <label for="clear-todo-${newPosition}" class="task-clear-label">
+        <div class="task-clear-label-${newPosition}"><img src="./images/icon-cross.svg" alt="X - Clear Task icon"></div>
+        <input class="task-clear-button" type="button" value="X" id="clear-todo-${newPosition}" onclick="todosList.eliminateTask('${newText}')">
+        </label>
+    </div>`;
     return toReturn;
 }
+let placeBelowDiv = document.createElement("div");
+placeBelowDiv.innerHTML = "&nbsp;";
+placeBelowDiv.setAttribute("class", "drag-target-below");
+placeBelowDiv.setAttribute("ondragover", "dragOver(event)");
+placeBelowDiv.setAttribute("ondragleave", "dragLeave(event)");
+placeBelowDiv.setAttribute("ondrop", "dropOver(event,true)");
 
 let itemsCounter = document.getElementById("items-left-number");
 let todoContainer = document.getElementById("to-do-container");
@@ -101,7 +106,6 @@ todosList.markAs = function (taskText) {
         }
     })
     task.completed = !task.completed;
-
     todosList.updatePositions();
     selectorActivation(activeFilter.status);
 }
@@ -127,26 +131,6 @@ todosList.eliminateCompleted = function () {
     selectorActivation(activeFilter.status);
 }
 
-todosList.changeOrder = function (toMoveText, whereTo) {
-    let toMove = toDoArray.find((task) => {
-        if (task.text == toMoveText) {
-            return task;
-        }
-    })
-    if (toDoArray[whereTo]) {
-        console.log(toDoArray[whereTo].text);
-        toDoArray.forEach(element => {
-            if (element.position >= whereTo) {
-                element.position = element.position + 2;
-            }
-        });
-    }
-    toMove.position = whereTo;
-    toDoArray.sort((a, b) => a.position - b.position);
-    todosList.updatePositions();
-    selectorActivation(activeFilter.status);
-}
-
 todosList.filterTasks = function (completedStatus) {
 
     let showArray = [];
@@ -163,37 +147,35 @@ todosList.filterTasks = function (completedStatus) {
 }
 
 todosList.updatePositions = function () {
-
     for (let i = 0; i < todoContainer.children.length; i++) {
-        let child = todoContainer.children[i];
-        let check = child.querySelector(`input[type="checkbox"]`);
-        let todoInArray = toDoArray.find((foundItem) => {
-            if (foundItem.text == child.querySelector('p').innerText) {
-                return foundItem
-            } else {
-                return undefined
-            }
-        });
-
-        if (todoInArray) {
-            check.checked = todoInArray.completed;
-
-            if (check.checked == true) {
-                child.querySelector("p").classList.add("completed-task");
-            } else {
-                child.querySelector("p").classList.remove("completed-task");
+        let check = todoContainer.children[i].querySelector(`input[type="checkbox"]`);
+        let paragraph = todoContainer.children[i].querySelector('p');
+        if (paragraph) {
+            let todoInArray = toDoArray.find((foundItem) => {
+                if (foundItem.text == paragraph.innerText) {
+                    return foundItem
+                } else {
+                    return undefined
+                }
+            });
+            if (todoInArray) {
+                check.checked = todoInArray.completed;
+                if (check.checked == true) {
+                    todoContainer.children[i].querySelector("p").classList.add("completed-task");
+                } else {
+                    todoContainer.children[i].querySelector("p").classList.remove("completed-task");
+                }
             }
         }
-    }
 
+    }
     for (let i = 0; i < toDoArray.length; i++) {
         const element = toDoArray[i];
         element.position = i;
     }
-
+    todoContainer.append(placeBelowDiv);
     itemsCounter.innerText = toDoArray.length;
 }
-
 
 let activeFilter = {
     ALL: "all",
@@ -252,6 +234,76 @@ function darkModeToggle() {
     } else {
         // DE-ACTIVATE dark mode
     }
+}
+
+todosList.changeOrder = function (toMoveText, whereTo) {
+    let toMove = toDoArray.find((task) => {
+        if (task.text == toMoveText) {
+            return task;
+        }
+    });
+    if (toDoArray[whereTo]) {
+        toDoArray.forEach(element => {
+            if (element.position >= whereTo) {
+                element.position = element.position + 5;
+            }
+        });
+    };
+    toMove.position = whereTo;
+    toDoArray.sort((a, b) => a.position - b.position);
+    todosList.updatePositions();
+    selectorActivation(activeFilter.status);
+}
+
+function dragStart(event) {
+    const dtrans = event.dataTransfer;
+    dtrans.dropEffect = "move";
+    dtrans.effectAllowed = "move";
+    let paragraph = event.target.querySelector('p');
+    dtrans.setData("text", paragraph.innerText);
+    let arrayOfDragAbove = body.querySelectorAll('.drag-target-above');
+    let dragBelow = body.querySelector('.drag-target-below');
+    dragBelow.classList.add('increase-z-index');
+    arrayOfDragAbove.forEach(element => {
+        element.classList.add('increase-z-index');
+    });
+}
+
+function dragEnd(event) {
+    let arrayOfDragAbove = body.querySelectorAll('.drag-target-above');
+    let dragBelow = body.querySelector('.drag-target-below');
+    dragBelow.classList.remove('increase-z-index');
+    arrayOfDragAbove.forEach(element => {
+        element.classList.remove('increase-z-index');
+    });
+}
+
+function dragOver(event) {
+    console.log(event.target);
+    event.target.classList.add("drag-evident");
+    event.preventDefault();
+}
+
+function dragLeave(event) {
+    console.log(event.target);
+    event.target.classList.remove("drag-evident");
+    event.preventDefault();
+}
+
+function dropOver(event, isBelow) {
+    let dataGet = event.dataTransfer.getData("text");
+    let targetText = event.target.parentNode.querySelector('p').innerText;
+    let targetPosition;
+    toDoArray.forEach(found => {
+        if (found.text == targetText) {
+            if (!isBelow) {
+                targetPosition = found.position;
+            } else {
+                targetPosition = found.position + 99;
+            }
+        }
+    });
+    todosList.changeOrder(dataGet, targetPosition);
 }
 
 function onPageLoad() {
