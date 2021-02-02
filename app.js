@@ -95,13 +95,13 @@ todosList.addTodo = function () {
 }
 
 todosList.markAs = function (taskText) {
-    console.log(taskText)
     let task = toDoArray.find((found) => {
         if (found.text == taskText) {
             return found;
         }
     })
     task.completed = !task.completed;
+
     todosList.updatePositions();
     selectorActivation(activeFilter.status);
 }
@@ -163,21 +163,35 @@ todosList.filterTasks = function (completedStatus) {
 }
 
 todosList.updatePositions = function () {
-    for (let i = 0; i < todoContainer.children; i++) {
-        todoContainer.children[i].querySelector(`input[type="checkbox"]`).checked = toDoArray.find((foundItem) => {
-            if (foundItem.position == i) {
+
+    for (let i = 0; i < todoContainer.children.length; i++) {
+        let child = todoContainer.children[i];
+        let check = child.querySelector(`input[type="checkbox"]`);
+        let todoInArray = toDoArray.find((foundItem) => {
+            if (foundItem.text == child.querySelector('p').innerText) {
                 return foundItem
             } else {
-                return
+                return undefined
             }
-        }).checked;
+        });
+
+        if (todoInArray) {
+            check.checked = todoInArray.completed;
+
+            if (check.checked == true) {
+                child.querySelector("p").classList.add("completed-task");
+            } else {
+                child.querySelector("p").classList.remove("completed-task");
+            }
+        }
     }
 
     for (let i = 0; i < toDoArray.length; i++) {
         const element = toDoArray[i];
         element.position = i;
     }
-    itemsCounter.innerText = toDoArray.length + 1;
+
+    itemsCounter.innerText = toDoArray.length;
 }
 
 
@@ -201,6 +215,7 @@ function selectorActivation(target) {
             completed.classList.remove("selected-selector");
             activeFilter.status = activeFilter.ALL;
             todosList.show();
+            todosList.updatePositions();
             break;
         case "active":
             all.classList.remove("selected-selector");
@@ -208,6 +223,7 @@ function selectorActivation(target) {
             completed.classList.remove("selected-selector");
             activeFilter.status = activeFilter.ACTIVE;
             todosList.filterTasks(false);
+            todosList.updatePositions();
             break;
         case "completed":
             all.classList.remove("selected-selector");
@@ -215,13 +231,15 @@ function selectorActivation(target) {
             completed.classList.add("selected-selector");
             activeFilter.status = activeFilter.COMPLETED;
             todosList.filterTasks(true);
+            todosList.updatePositions();
             break;
         default:
             all.classList.add("selected-selector");
             active.classList.remove("selected-selector");
             completed.classList.remove("selected-selector");
             activeFilter.status = activeFilter.ALL;
-            todosList.filterTasks();
+            todosList.show();
+            todosList.updatePositions();
             break;
     }
 }

@@ -189,12 +189,16 @@ h1 {
 }
 
 .task-clear-label{
+    opacity: 0;
     flex-grow: 2;
     align-self: center;
     justify-self: center;
     width: 2rem;
     min-width: 2rem;
     padding: 0.3rem;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
 }
 
 .task-clear-label-x{
@@ -231,9 +235,12 @@ h1 {
     justify-content: end;
     align-self: center;
     padding-right: 1rem;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
 }
-.clear-completed-text{
-
+.clear-completed:hover .clear-completed-text{
+    font-weight: bold;
 }
 
 .selectors-wrapper{
@@ -247,6 +254,7 @@ h1 {
     color: hsl(236, 9%, 61%);
     font-size: 1rem;
     font-weight: bolder;
+    -moz-transition: color 0.4s;
 }
 
 .selectors-wrapper div{
@@ -260,4 +268,13 @@ h1 {
 
 label:hover{
     cursor:pointer;
+}
+
+.to-do:hover .task-clear-label {
+    opacity: 1;
+}
+
+.completed-task{
+    color: hsl(236, 33%, 92%);
+    text-decoration: line-through;
 }
