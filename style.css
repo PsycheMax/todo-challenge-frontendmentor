@@ -90,6 +90,10 @@ h1 {
     height: 0.8rem;
 }
 
+.disabled-icon{
+    display:none;
+}
+
 .checkmark{
     height: 1.6rem;
     width: 1.6rem;

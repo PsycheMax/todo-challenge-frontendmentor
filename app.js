@@ -162,8 +162,10 @@ todosList.updatePositions = function () {
                 check.checked = todoInArray.completed;
                 if (check.checked == true) {
                     todoContainer.children[i].querySelector("p").classList.add("completed-task");
+                    todoContainer.children[i].querySelector('img').classList.remove("disabled-icon");
                 } else {
                     todoContainer.children[i].querySelector("p").classList.remove("completed-task");
+                    todoContainer.children[i].querySelector('img').classList.add("disabled-icon");
                 }
             }
         }
