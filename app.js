@@ -4,7 +4,7 @@ function populateToDo(object) {
     // let newCompleted = object.completed;
     let newPosition = object.position;
     let toReturn = `
-    <div class="to-do" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
+    <div class="to-do to-do-dark" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
     <div class="drag-target-above" ondragover="dragOver(event)" ondrop="dropOver(event,false)" ondragleave="dragLeave(event)">&nbsp;</div>
         <div class="check-wrapper">
         <label class="task-done-label" id="task-done-label" for="task-done-number-${newPosition}" onchange="todosList.markAs('${newText}')">
@@ -12,8 +12,8 @@ function populateToDo(object) {
             <div class="checkmark"><img class="check-icon" src="./images/icon-check.svg" alt="Check"></div>
         </label>
         </div>
-        <div class="task-single-wrapper">
-        <div class="task-label">
+        <div class="task-single-wrapper task-single-wrapper-dark">
+        <div class="task-label task-label-dark">
             <p class="task-text">
             ${newText}
             </p>
@@ -60,7 +60,7 @@ let toDoArray = [
     },
     {
         text: "Complete Todo App on Frontend Mentor",
-        completed: true,
+        completed: false,
         position: 4
     }
 ];
@@ -189,7 +189,6 @@ function selectorActivation(target) {
     let all = selectorWrapper.children[0].children[0];
     let active = selectorWrapper.children[1].children[0];
     let completed = selectorWrapper.children[2].children[0];
-
     switch (target) {
         case "all":
             all.classList.add("selected-selector");
@@ -223,16 +222,6 @@ function selectorActivation(target) {
             todosList.show();
             todosList.updatePositions();
             break;
-    }
-}
-
-let darkModeActive = false;
-function darkModeToggle() {
-    // implement logic to change everything to dark-mode and from dark mode.
-    if (!darkModeActive) {
-        // ACTIVATE dark mode
-    } else {
-        // DE-ACTIVATE dark mode
     }
 }
 
@@ -309,4 +298,20 @@ function dropOver(event, isBelow) {
 function onPageLoad() {
     selectorActivation(activeFilter.status);
     todosList.updatePositions();
+}
+
+let darkModeActive = false;
+function darkModeToggle() {
+    darkModeActive = !darkModeActive;
+
+    let lightCSS = document.querySelectorAll("link")[5];
+    let darkCSS = document.querySelectorAll("link")[4];
+
+    if (!darkModeActive) {
+        darkCSS.setAttribute("href", "./darkmode.css");
+        lightCSS.setAttribute("href", "");
+    } else {
+        darkCSS.setAttribute("href", "");
+        lightCSS.setAttribute("href", "./lightmode.css");
+    }
 }

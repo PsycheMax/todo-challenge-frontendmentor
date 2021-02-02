@@ -14,8 +14,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="./lightmode.css">
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     .attribution {
       font-size: 11px;
@@ -28,10 +29,10 @@
   </style>
 </head>
 
-<body onpageshow="onPageLoad()">
+<body onpageshow="onPageLoad()" class="body-background">
   <div class="container">
     <header class="header">
-      <div id="bg-controller" class="hero-bg light-mode-bg">
+      <div id="bg-controller" class="hero-bg">
       </div>
       <div class="title">
         <h1>Todo</h1>
@@ -39,6 +40,7 @@
       <div class="darkmode-switch-wrapper">
         <label for="darkmode" onchange="darkModeToggle()">
           <img id="darkmodeSwitchIcon" src="images/icon-moon.svg" alt="moon icon">
+          <img id="lightmodeSwitchIcon" src="images/icon-sun.svg" alt="sun icon">
           <input type="checkbox" name="darkmode" id="darkmode">
         </label>
       </div>
@@ -64,13 +66,13 @@
       </div>
 
 
+
       <div class="todos-list-wrapper">
         <div id="to-do-container">
           <!-- The todos will be generated here -->
         </div>
 
-
-        <div class="last-row ">
+        <div class="last-row">
           <div class="items-left"><span id="items-left-number">x</span>&nbsp;items left</div>
           <div class="clear-completed">
             <label for="clear-completed-tasks">
@@ -113,9 +115,9 @@
 
       Drag and drop to reorder list
 
-      <div class="attribution">
+      <div class="attribution max-footer">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-        Coded by <a href="#">Your Name Here</a>.
+        Coded by <a href="https://maxpace.net">Max Pace</a>.
       </div>
 
     </div>
