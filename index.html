@@ -104,10 +104,10 @@
 
       </div>
 
-      <div class="selectors-wrapper">
+      <div id="selectors-wrapper" class="selectors-wrapper">
         <div class="all-selector">
           <label for="all-selector" class="selector-button selected-selector all-selector-label"
-            onclick="todosList.show(toDoArray)">
+            onclick="todosList.show(toDoArray);selectorActivation('all');">
             <div>All</div>
             <input class="button-to-hide" type="button" value="All">
           </label>
@@ -115,7 +115,7 @@
         </div>
         <div class="active-selector">
           <label for="active-selector" class="selector-button active-selector-label"
-            onclick="todosList.filterTasks(false)">
+            onclick="todosList.filterTasks(false);selectorActivation('active');">
             <div>Active</div>
             <input class="button-to-hide" type="button" value="All">
           </label>
@@ -124,7 +124,7 @@
         <div class="completed-selector">
 
           <label for="completed-selector" class="selector-button complete-selector-label"
-            onclick="todosList.filterTasks(true)">
+            onclick="todosList.filterTasks(true); selectorActivation('completed');">
             <div>Completed</div>
             <input class="button-to-hide" type="button" value="All">
           </label>

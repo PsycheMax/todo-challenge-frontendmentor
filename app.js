@@ -55,7 +55,7 @@ let toDoArray = [
     },
     {
         text: "Complete Todo App on Frontend Mentor",
-        completed: false,
+        completed: true,
         position: 4
     }
 ];
@@ -82,7 +82,7 @@ todosList.addTodo = function () {
     let newEntry = {
         text: newText,
         completed: newCompleted,
-        position: toDoArray.length + 1
+        position: toDoArray.length
     }
     toDoArray.push(newEntry);
     document.getElementById(`newToDo`).value = "";
@@ -130,10 +130,17 @@ todosList.filterTasks = function (completedStatus) {
 }
 
 todosList.updatePositions = function () {
-    for (let i = 0; i < toDoArray.length; i++) {
-        toDoArray[i].position = i;
+    for (let i = 0; i < todoContainer.children; i++) {
+
+
         // TODO: FIX THIS
-        todoContainer.children[i].querySelector(`input[type="checkbox"]`).checked = toDoArray[i].completed;
+        todoContainer.children[i].querySelector(`input[type="checkbox"]`).checked = toDoArray.find((foundItem) => {
+            if (foundItem.position == i) {
+                return foundItem
+            } else {
+                return
+            }
+        }).checked;
     }
     itemsCounter.innerText = toDoArray.length + 1;
 }
@@ -146,13 +153,38 @@ function darkModeToggle(darkMode) {
     }
 }
 
+const selectorWrapper = document.querySelector('#selectors-wrapper');
+function selectorActivation(target) {
+    let all = selectorWrapper.children[0].children[0];
+    let active = selectorWrapper.children[1].children[0];
+    let completed = selectorWrapper.children[2].children[0];
+
+    switch (target) {
+        case "all":
+            all.classList.add("selected-selector");
+            active.classList.remove("selected-selector");
+            completed.classList.remove("selected-selector");
+            break;
+        case "active":
+            all.classList.remove("selected-selector");
+            active.classList.add("selected-selector");
+            completed.classList.remove("selected-selector");
+            break;
+        case "completed":
+            all.classList.remove("selected-selector");
+            active.classList.remove("selected-selector");
+            completed.classList.add("selected-selector");
+            break;
+        default:
+            all.classList.add("selected-selector");
+            active.classList.remove("selected-selector");
+            completed.classList.remove("selected-selector");
+            break;
+    }
+
+}
+
 function onPageLoad() {
-    toDoArray.forEach(todo => {
-        let todoNode = document.createElement("div");
-        todoNode.innerHTML = populateToDo(todo);
-
-        todoContainer.appendChild(todoNode);
-    });
+    todosList.show();
     todosList.updatePositions();
-
 }
