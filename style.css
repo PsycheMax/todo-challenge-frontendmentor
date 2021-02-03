@@ -308,11 +308,27 @@ label:hover{
     .container{
         max-width: 550px ;
     }
+
+    .drag-target-above{
+        max-width: 540px;
+    }
+
+    .drag-target-below{
+        max-width: 540px;
+    }
 }
 
 @media only screen and (min-width: 960px) {
     .container{
         max-width: 750px;
+    }
+
+    .drag-target-above{
+        max-width: 745px;
+    }
+
+    .drag-target-below{
+        max-width: 745px;
     }
 
     .unified-last-row{
