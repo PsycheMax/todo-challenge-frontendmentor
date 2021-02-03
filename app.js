@@ -270,13 +270,11 @@ function dragEnd(event) {
 }
 
 function dragOver(event) {
-    console.log(event.target);
     event.target.classList.add("drag-evident");
     event.preventDefault();
 }
 
 function dragLeave(event) {
-    console.log(event.target);
     event.target.classList.remove("drag-evident");
     event.preventDefault();
 }

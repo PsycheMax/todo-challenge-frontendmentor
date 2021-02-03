@@ -71,3 +71,7 @@
     pointer-events:all !important;
     box-shadow: 1px 1px 10px 10px rgba(250,250,210,0.5);
 }
+
+.drag-instructions{
+    color: hsl(236, 9%, 61%);
+}

@@ -56,7 +56,7 @@
 
 .selectors-wrapper{
     background: hsl(235, 24%, 19%);
-    color:   hsl(233, 14%, 35%);
+    color: hsl(233, 14%, 35%);
 }
 
 .selected-selector{
@@ -64,7 +64,7 @@
 }
 
 .completed-task{
-    color:   hsl(233, 14%, 35%);
+    color: hsl(233, 14%, 35%);
 }
 
 .clear-completed:hover .clear-completed-text{
@@ -72,9 +72,13 @@
 }
 
 .drag-evident {
-    background-color:rgba(228, 229, 241,0.5);
+    background-color: rgba(228, 229, 241,0.5);
     pointer-events:all !important;
     box-shadow: 1px 1px 10px 10px rgba(228, 229, 241,0.5);
+}
+
+.drag-instructions{
+    color: hsl(234, 39%, 85%);
 }
 
 .attribution{
