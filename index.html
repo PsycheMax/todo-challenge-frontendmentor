@@ -49,10 +49,11 @@
     <div class="main-app-content">
       <div class="input-wrapper">
         <div class="check-wrapper">
-          <label class="task-done-label" id="task-done-label-input" for="newTaskStatus">
+          <label class="task-done-label" id="task-done-label-input" for="newTaskStatus"
+            onchange="toggleInputCheckIcon()">
             <input type="checkbox" name="newTaskStatus" id="newTaskStatus">
             <div class="checkmark">
-              <img class="check-icon disabled-icon" src="./images/icon-check.svg" alt="Check">
+              <img class="check-icon disabled-icon" id="newTaskStatusIcon" src="./images/icon-check.svg" alt="Check">
             </div>
           </label>
         </div>
@@ -71,17 +72,45 @@
         <div id="to-do-container">
           <!-- The todos will be generated here -->
         </div>
+      </div>
 
-        <div class="last-row">
-          <div class="items-left"><span id="items-left-number">x</span>&nbsp;items left</div>
-          <div class="clear-completed">
-            <label for="clear-completed-tasks">
-              <div class="clear-completed-text">Clear Completed</div>
-              <input class="button-to-hide" type="button" value="Clear Completed" id="clear-completed-tasks"
-                onclick="todosList.eliminateCompleted()">
+      <div class="last-row">
+        <div class="items-left"><span id="items-left-number">x</span>&nbsp;items left</div>
+
+        <div id="selectors-to-disappear" class="selectors-wrapper-inline unified-last-row">
+          <div class="all-selector">
+            <label for="all-selector" class="selector-button selected-selector all-selector-label"
+              onclick="selectorActivation('all');">
+              <div>All</div>
+              <input class="button-to-hide" type="button" value="All">
+            </label>
+          </div>
+
+          <div class="active-selector">
+            <label for="active-selector" class="selector-button active-selector-label"
+              onclick="selectorActivation('active');">
+              <div>Active</div>
+              <input class="button-to-hide" type="button" value="All">
+            </label>
+          </div>
+
+          <div class="completed-selector">
+            <label for="completed-selector" class="selector-button complete-selector-label"
+              onclick="selectorActivation('completed');">
+              <div>Completed</div>
+              <input class="button-to-hide" type="button" value="All">
             </label>
           </div>
         </div>
+
+        <div class="clear-completed">
+          <label for="clear-completed-tasks">
+            <div class="clear-completed-text">Clear Completed</div>
+            <input class="button-to-hide" type="button" value="Clear Completed" id="clear-completed-tasks"
+              onclick="todosList.eliminateCompleted()">
+          </label>
+        </div>
+
 
       </div>
 
@@ -92,25 +121,24 @@
             <div>All</div>
             <input class="button-to-hide" type="button" value="All">
           </label>
-
         </div>
+
         <div class="active-selector">
           <label for="active-selector" class="selector-button active-selector-label"
             onclick="selectorActivation('active');">
             <div>Active</div>
             <input class="button-to-hide" type="button" value="All">
           </label>
-
         </div>
-        <div class="completed-selector">
 
+        <div class="completed-selector">
           <label for="completed-selector" class="selector-button complete-selector-label"
             onclick="selectorActivation('completed');">
             <div>Completed</div>
             <input class="button-to-hide" type="button" value="All">
           </label>
-
         </div>
+
       </div>
 
       <div class="drag-instructions">
@@ -123,10 +151,10 @@
         Coded by <a href="https://maxpace.net">Max Pace</a>.
       </div>
 
-    </div>
-  </div>
 
-  <script src="./app.js"></script>
+    </div>
+
+    <script src="./app.js"></script>
 </body>
 
 </html>

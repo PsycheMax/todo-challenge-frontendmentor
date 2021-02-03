@@ -27,6 +27,7 @@ function populateToDo(object) {
     </div>`;
     return toReturn;
 }
+
 let placeBelowDiv = document.createElement("div");
 placeBelowDiv.innerHTML = "&nbsp;";
 placeBelowDiv.setAttribute("class", "drag-target-below");
@@ -39,8 +40,13 @@ let todoContainer = document.getElementById("to-do-container");
 
 let toDoArray = [
     {
-        text: "Jog around the park 3x",
+        text: "Complete online JavaScript course",
         completed: true,
+        position: 0
+    },
+    {
+        text: "Jog around the park 3x",
+        completed: false,
         position: 0,
     },
     {
@@ -314,4 +320,16 @@ function darkModeToggle() {
         darkCSS.setAttribute("href", "");
         lightCSS.setAttribute("href", "./lightmode.css");
     }
+}
+
+let inputCheckIcon = body.querySelector('#newTaskStatusIcon');
+inputCheckIcon.toggle = false;
+function toggleInputCheckIcon() {
+    inputCheckIcon.toggle = !inputCheckIcon.toggle;
+    if (inputCheckIcon.toggle) {
+        inputCheckIcon.classList.remove("disabled-icon");
+    } else {
+        inputCheckIcon.classList.add("disabled-icon");
+    }
+
 }
